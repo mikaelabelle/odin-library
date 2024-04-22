@@ -5,3 +5,22 @@ body {
 .input {
     margin: 6px;
 }
+
+#library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.author {
+    font-style: italic;
+}

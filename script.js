@@ -23,14 +23,24 @@ function addBookToLibrary(title, author, pages, readStatus) {
 
 function addBookCard(book) {
     const bookCard = document.createElement("div")
-    const title = document.createTextNode(`${book.title} by ${book.author}`)
+    const title = document.createElement("div")
+    const author = document.createElement("div")
+    const pages = document.createElement("div")
+    title.innerText = (book.title)
+    title.classList.add("title")
     bookCard.appendChild(title)
+    author.innerText = (book.author)
+    bookCard.appendChild(author)
+    author.classList.add("author")
+    pages.innerText = (`${book.pages} pages`)
+    title.classList.add("pages")
+    bookCard.appendChild(pages)
     bookCard.classList.add("book")
     libraryDiv.appendChild(bookCard)
 }
 
-addBookToLibrary("Le Test", "Person Personus", 3243, "not read yet")
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", 1001, "not read yet")
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 305, "not read yet")
 
 newBookForm.addEventListener("submit", e => {
     e.preventDefault()
