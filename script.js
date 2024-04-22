@@ -36,6 +36,7 @@ function addBookCard(book) {
     const pages = document.createElement("div")
     const btn = document.createElement("button")
     const checkbox = document.createElement("input")
+    const label = document.createElement("label")
     title.innerText = book.title
     title.classList.add("title")
     bookCard.appendChild(title)
@@ -45,6 +46,12 @@ function addBookCard(book) {
     pages.innerText = `${book.pages} pages`
     title.classList.add("pages")
     bookCard.appendChild(pages)
+    label.innerText = "Read?"
+    bookCard.appendChild(label)
+    label.setAttribute("for", "read")
+    checkbox.setAttribute("type", "checkbox")
+    checkbox.setAttribute("name", "read")
+    bookCard.appendChild(checkbox)
     btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22px"><title>trash-can</title><path fill="#FD4343"d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>'
     bookCard.appendChild(btn)
     btn.classList.add("remove")
@@ -55,8 +62,6 @@ function addBookCard(book) {
         removeBook(book)
     })
 
-    checkbox.setAttribute("type", "checkbox")
-    bookCard.appendChild(checkbox)
     if (book.readStatus === "read") {
         checkbox.checked = true
     }
