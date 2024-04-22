@@ -1,20 +1,57 @@
 body {
     font-family: "Roboto", sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+}
+
+#leftmargin {
+    grid-column: 1/2;
+}
+
+#center {
+    grid-column: 2/3;
+}
+
+#rightmargin {
+    grid-column: 3/4;
 }
 
 .input {
     margin: 6px;
 }
 
+#pages {
+    width: 50px;
+}
+
+input {
+    border: 0.5pt solid rgb(196, 196, 196);
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+
+h1+button,
+dialog button {
+    border-style: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 10pt;
+    font-weight: 600;
+    background-color: #52BE80;
+    color: white;
+    margin-top: 10px;
+}
+
 #library {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, 200px);
     gap: 20px;
 }
 
 .book {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    border-radius: 10px;
 }
 
 .title {
@@ -23,4 +60,29 @@ body {
 
 .author {
     font-style: italic;
+}
+
+.remove {
+    background-color: white;
+    color: white;
+    border-style: none;
+    margin-top: 8px;
+}
+
+.remove:hover {
+    cursor: pointer;
+}
+
+
+
+dialog {
+    margin: 8vh auto;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 1.6rem;
+}
+
+dialog h2 {
+    margin-top: 0;
 }

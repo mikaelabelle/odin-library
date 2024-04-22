@@ -6,6 +6,7 @@ const pagesInput = document.querySelector("#pages")
 const libraryDiv = document.querySelector("#library")
 const openDialog = document.querySelector("h1 + button")
 const dialog = document.querySelector("dialog")
+const readBox = document.querySelector("#readStatus")
 
 
 openDialog.addEventListener("click", () => {
@@ -34,6 +35,7 @@ function addBookCard(book) {
     const author = document.createElement("div")
     const pages = document.createElement("div")
     const btn = document.createElement("button")
+    const checkbox = document.createElement("input")
     title.innerText = book.title
     title.classList.add("title")
     bookCard.appendChild(title)
@@ -43,7 +45,7 @@ function addBookCard(book) {
     pages.innerText = `${book.pages} pages`
     title.classList.add("pages")
     bookCard.appendChild(pages)
-    btn.innerText = "Remove"
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22px"><title>trash-can</title><path fill="#FD4343"d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>'
     bookCard.appendChild(btn)
     btn.classList.add("remove")
     bookCard.classList.add("book")
@@ -52,6 +54,12 @@ function addBookCard(book) {
     btn.addEventListener("click", () => {
         removeBook(book)
     })
+
+    checkbox.setAttribute("type", "checkbox")
+    bookCard.appendChild(checkbox)
+    if (book.readStatus === "read") {
+        checkbox.checked = true
+    }
 }
 
 function removeBook(remove) {
@@ -60,12 +68,16 @@ function removeBook(remove) {
     updateLibary()
 }
 
-addBookToLibrary("The Way of Kings", "Brandon Sanderson", 1001, "not read yet")
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 305, "not read yet")
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 305, "read")
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", 1178, "unread")
+addBookToLibrary("The Way of Kings", "Brandon Sanderson", 1001, "read")
+addBookToLibrary("Tress of the Emerald Sea", "Brandon Sanderson", 483, "unread")
 
 newBookForm.addEventListener("submit", e => {
     e.preventDefault()
-    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value)
+    let readStatus
+    readBox.checked ? readStatus = "read" : readStatus = "unread"
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readStatus)
     dialog.close()
     newBookForm.reset()
 })
