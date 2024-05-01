@@ -13,12 +13,14 @@ openDialog.addEventListener("click", () => {
     dialog.showModal()
 })
 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.info = () => {
+class Book {
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
+    info = () => {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readStatus}`
     }
 }
